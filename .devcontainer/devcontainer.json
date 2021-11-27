@@ -24,7 +24,8 @@
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// Install latest patch version of npm.
-	"postCreateCommand": "npm install -g npm@8",
+	// Install expo-cli.
+	"postCreateCommand": "npm install -g npm@8 && npm install -g expo-cli",
 
 	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "node"

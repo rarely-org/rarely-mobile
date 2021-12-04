@@ -9,6 +9,10 @@ const Discover = () => (
   <Screen><Text>Discover</Text></Screen>
 )
 
+const Add = () => (
+  <Screen><Text>Add</Text></Screen>
+)
+
 const Search = () => (
   <Screen><Text>Search</Text></Screen>
 )
@@ -17,6 +21,7 @@ const Tab = createBottomTabNavigator();
 const TabNavigator = () => (
   <Tab.Navigator>
     <Tab.Screen name="Discover" component={Discover} />
+    <Tab.Screen name="Add" component={Add} />
     <Tab.Screen name="Search" component={Search} />
   </Tab.Navigator>
 )

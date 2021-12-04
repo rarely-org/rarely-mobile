@@ -3,13 +3,14 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
+import Screen from "./components/Screen";
 
 const Discover = () => (
-  <View><Text>Discover</Text></View>
+  <Screen><Text>Discover</Text></Screen>
 )
 
 const Search = () => (
-  <View><Text>Search</Text></View>
+  <Screen><Text>Search</Text></Screen>
 )
 
 const Tab = createBottomTabNavigator();

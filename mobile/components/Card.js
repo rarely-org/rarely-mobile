@@ -8,13 +8,13 @@ import {
 import Text from "./Text";
 import colors from "../config/colors";
 
-function Card({ description, onPress }) {
+function Card({ text, onPress }) {
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.card}>
         <View style={styles.detailsContainer}>
-          <Text style={styles.description} numberOfLines={2}>
-            {description}
+          <Text style={styles.text} numberOfLines={2}>
+            {text}
           </Text>
         </View>
       </View>
@@ -31,9 +31,6 @@ const styles = StyleSheet.create({
   },
   detailsContainer: {
     padding: 20,
-  },
-  description: {
-    marginBottom: 7,
   },
 });
 

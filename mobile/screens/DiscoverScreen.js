@@ -5,14 +5,14 @@ import Card from "../components/Card";
 import colors from "../config/colors";
 import Screen from "../components/Screen";
 
-const items = [
+const posts = [
   {
     id: 1,
-    description: "Mio from SORG",
+    text: "Mio from SORG",
   },
   {
     id: 2,
-    description: "F5 Corpus VS from Permobil",
+    text: "F5 Corpus VS from Permobil",
   },
 ];
 
@@ -20,11 +20,11 @@ function DiscoverScreen({ navigation }) {
   return (
     <Screen style={styles.screen}>
       <FlatList
-        data={items}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => (
+        data={posts}
+        keyExtractor={(post) => post.id.toString()}
+        renderItem={({ item: post }) => (
           <Card
-            description={item.description}
+            text={post.text}
           />
         )}
       />

@@ -1,13 +1,33 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import Screen from "./components/Screen";
+import DiscoverScreen from "./screens/DiscoverScreen";
+
+const Add = () => (
+  <Screen><Text>Add</Text></Screen>
+)
+
+const Search = () => (
+  <Screen><Text>Search</Text></Screen>
+)
+
+const Tab = createBottomTabNavigator();
+const TabNavigator = () => (
+  <Tab.Navigator>
+    <Tab.Screen name="Discover" component={DiscoverScreen} />
+    <Tab.Screen name="Add" component={Add} />
+    <Tab.Screen name="Search" component={Search} />
+  </Tab.Navigator>
+)
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <TabNavigator />
+    </NavigationContainer>
   );
 }
 

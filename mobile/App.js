@@ -5,10 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import Screen from "./components/Screen";
 import DiscoverScreen from "./screens/DiscoverScreen";
-
-const Add = () => (
-  <Screen><Text>Add</Text></Screen>
-)
+import PostEditScreen from "./screens/PostEditScreen";
 
 const Search = () => (
   <Screen><Text>Search</Text></Screen>
@@ -18,7 +15,7 @@ const Tab = createBottomTabNavigator();
 const TabNavigator = () => (
   <Tab.Navigator>
     <Tab.Screen name="Discover" component={DiscoverScreen} />
-    <Tab.Screen name="Add" component={Add} />
+    <Tab.Screen name="Add" component={PostEditScreen} />
     <Tab.Screen name="Search" component={Search} />
   </Tab.Navigator>
 )

@@ -49,6 +49,7 @@ function PostEditScreen() {
       <Formik
         initialValues={{
           text: "",
+          images: [],
         }}
         // onSubmit={(values) => console.log(values)}
         onSubmit={({text}) => createPost(text)}

@@ -19,6 +19,7 @@
     "expo": "~43.0.2",
     "expo-cli": "^4.13.0",
     "expo-status-bar": "~1.1.0",
+    "formik": "^2.1.4",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.3",

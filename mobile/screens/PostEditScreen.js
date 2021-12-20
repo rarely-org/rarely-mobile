@@ -5,6 +5,7 @@ import { supabase } from '../config/supabase';
 
 import Screen from "../components/Screen"
 import Button from "../components/Button"
+import FormImagePicker from "../components/form/FormImagePicker";
 
 const createPost = async (text) => {
   text = text.trim()
@@ -53,6 +54,7 @@ function PostEditScreen() {
         onSubmit={({text}) => createPost(text)}
       >
         <>
+          <FormImagePicker name="images" />
           <TextField />
           <SubmitButton />
         </>

@@ -7,17 +7,51 @@ import Screen from "../components/Screen"
 import Button from "../components/Button"
 import FormImagePicker from "../components/form/FormImagePicker";
 
-const createPost = async (text) => {
+const createPost = async ({ images, text }) => {
+
+  console.log(images)
+
+  const fileNames = []
+
+  for (const image in images) {
+    const imageUri = images[image]
+    const formData = new FormData()
+
+
+    // There may be safer ways to generate a unique filename
+    const fileName = Date.now().toString(36) + Math.random().toString(36).substring(2) + '.jpg'
+
+    formData.append('files', {
+      uri: imageUri,
+      name: fileName,
+      type: 'image/jpeg'
+    })
+
+    fileNames.push(fileName)
+    console.log('formData', formData)
+
+    const { data, error } = await supabase.storage
+      .from('images')
+      .upload(fileName, formData)
+
+    console.log('data', data)
+    console.log('error', error)
+  }
+
   text = text.trim()
 
   if (text.length) {
-    const { data: post, error } = await supabase
+    console.log('Saving ...', text)
+    const { data, error } = await supabase
       .from('posts')
-      .insert({ text })
+      .insert({
+        text,
+        images: fileNames
+      })
       .single()
 
-    if (error) console.log(error.message)
-    else {}
+    console.log('data', data)
+    console.log('error', error)
   }
 }
 
@@ -52,7 +86,7 @@ function PostEditScreen() {
           images: [],
         }}
         // onSubmit={(values) => console.log(values)}
-        onSubmit={({text}) => createPost(text)}
+        onSubmit={(values) => createPost(values)}
       >
         <>
           <FormImagePicker name="images" />

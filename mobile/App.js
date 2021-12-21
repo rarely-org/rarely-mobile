@@ -21,6 +21,13 @@ const Profile = () => (
   <Screen><Text>Profile</Text></Screen>
 )
 
+const theme = {
+  colors: {
+    background: '#eeeeee',
+    border: '#333333',
+  },
+};
+
 const Tab = createBottomTabNavigator();
 const TabNavigator = () => (
   <Tab.Navigator tabBarOptions={{
@@ -48,7 +55,7 @@ const TabNavigator = () => (
 
 export default function App() {
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={theme} >
       <TabNavigator />
     </NavigationContainer>
   );

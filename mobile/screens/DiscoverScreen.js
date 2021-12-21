@@ -22,8 +22,28 @@ function DiscoverScreen({ navigation }) {
       .select('*')
       .order('id', { ascending: false })
 
-    if (error) console.log('error', error)
-    else setPosts(posts)
+    if (!error) {  
+      posts.forEach(post => {
+        if (post.images) {
+          post.images = post.images.map(image => {
+            console.log('image', image)
+            const { publicURL, error } = supabase
+              .storage
+              .from('images')
+              .getPublicUrl(image)
+
+            console.log('publicURL', publicURL)
+            console.log('error', error)
+            
+            return publicURL
+          })
+        }
+      })
+
+      setPosts(posts) 
+    } else {
+      console.log('error', error)
+    }
   }
 
   return (
@@ -33,6 +53,7 @@ function DiscoverScreen({ navigation }) {
         keyExtractor={(post) => post.id.toString()}
         renderItem={({ item: post }) => (
           <Card
+            images={post.images}
             text={post.text}
           />
         )}

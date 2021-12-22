@@ -4,6 +4,10 @@ import { StyleSheet, Text, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+// import Icon from '@mdi/react';
+// import { mdiPlaylistEdit } from '@mdi/js';
+
+// console.log(mdiPlaylistEdit)
 
 import Screen from "./components/Screen";
 import DiscoverScreen from "./screens/DiscoverScreen";
@@ -36,7 +40,7 @@ const TabNavigator = () => (
     inactiveTintColor: "#333333"
   }}>
     <Tab.Screen name="Discover" component={DiscoverScreen} options={{
-      tabBarIcon: ({ color, size }) => (<MaterialCommunityIcons name="star" color={color} size={size} />)
+      tabBarIcon: ({ color, size }) => (<MaterialCommunityIcons name="creation" color={color} size={size} />)
     }}/>
     <Tab.Screen name="Search" component={Search} options={{
       tabBarIcon: ({ color, size }) => (<MaterialCommunityIcons name="magnify" color={color} size={size} />)

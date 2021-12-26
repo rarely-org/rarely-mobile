@@ -51,6 +51,8 @@ function DiscoverScreen({ navigation }) {
       <FlatList
         data={posts}
         keyExtractor={(post) => post.id.toString()}
+        showsVerticalScrollIndicator={false}
+        contentInset={{ right: 0, top: 0, left: 0, bottom: 15 }}
         renderItem={({ item: post }) => (
           <Card
             images={post.images}
@@ -64,7 +66,6 @@ function DiscoverScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   screen: {
-    padding: 20,
     backgroundColor: colors.light,
   },
 });

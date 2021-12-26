@@ -30,9 +30,10 @@ function Card({ text, images, onPress }) {
 
 const styles = StyleSheet.create({
   card: {
-    borderRadius: 15,
+    borderRadius: 5,
     backgroundColor: colors.white,
-    marginBottom: 20,
+    margin: 15,
+    marginBottom: 0,
     overflow: "hidden",
   },
   detailsContainer: {

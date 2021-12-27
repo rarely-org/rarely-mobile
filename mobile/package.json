@@ -10,14 +10,12 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "@expo/ngrok": "^4.1.0",
     "@react-native-async-storage/async-storage": "^1.15.14",
     "@react-navigation/bottom-tabs": "^5.11.15",
     "@react-navigation/native": "^5.9.8",
     "@supabase/supabase-js": "^1.28.5",
     "babel-plugin-inline-dotenv": "^1.6.0",
     "expo": "~43.0.2",
-    "expo-cli": "^4.13.0",
     "expo-status-bar": "~1.1.0",
     "formik": "^2.1.4",
     "react": "17.0.1",

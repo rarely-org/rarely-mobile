@@ -19,7 +19,7 @@ function Card({ text, images, onPress }) {
           <Image style={styles.image} source={{ uri: images[0] }} />
         )}
         <View style={styles.detailsContainer}>
-          <Text style={styles.text} numberOfLines={2}>
+          <Text style={styles.text} numberOfLines={5}>
             {text}
           </Text>
         </View>
@@ -37,11 +37,10 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   detailsContainer: {
-    padding: 20,
+    padding: 15,
   },
   image: {
-    width: "100%",
-    height: 200,
+    aspectRatio: 1,
   },
 });
 

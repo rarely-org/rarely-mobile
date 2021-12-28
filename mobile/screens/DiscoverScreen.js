@@ -11,6 +11,7 @@ import 'react-native-url-polyfill/auto'
 
 function DiscoverScreen({ navigation }) {
   const [posts, setPosts] = useState([])
+  const [refreshing, setRefreshing] = useState(false)
 
   useEffect(() => {
     fetchPosts()
@@ -59,6 +60,8 @@ function DiscoverScreen({ navigation }) {
             text={post.text}
           />
         )}
+        refreshing={refreshing}
+        onRefresh={fetchPosts}
       />
     </Screen>
   );

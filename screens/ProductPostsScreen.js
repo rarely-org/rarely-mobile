@@ -22,12 +22,14 @@ function ProductPostsScreen({ navigation, route }) {
   const fetchPosts = async () => {
     const { data: posts, error } = await supabase
       .from('posts')
-      .select('*, products (*)')
+      .select('*, products!inner (id, name)')
+      .in('products.id', [1])
       .order('id', { ascending: false })
 
-    if (!error) {
-      console.log('--- posts ---', posts)
+    console.log('posts for product:', posts)
+    console.log('error for product:', error)
 
+    if (!error) {
       posts.forEach(post => {
         if (post.images) {
           post.images = post.images.map(image => {

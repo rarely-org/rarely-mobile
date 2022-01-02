@@ -10,8 +10,8 @@ import Text from "./Text";
 import colors from "../config/colors";
 
 function Card({ text, images, products, onPress }) {
-  console.log('Card:images', images)
-  console.log('Card:text', text)
+  // console.log('Card:images', images)
+  // console.log('Card:text', text)
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.card}>

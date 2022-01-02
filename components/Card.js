@@ -9,7 +9,7 @@ import {
 import Text from "./Text";
 import colors from "../config/colors";
 
-function Card({ text, images, onPress }) {
+function Card({ text, images, products, onPress }) {
   console.log('Card:images', images)
   console.log('Card:text', text)
   return (
@@ -18,11 +18,14 @@ function Card({ text, images, onPress }) {
         {images && images.length > 0 && (
           <Image style={styles.image} source={{ uri: images[0] }} />
         )}
-        <View style={styles.detailsContainer}>
+        <View style={styles.textContainer}>
           <Text style={styles.text} numberOfLines={5}>
             {text}
           </Text>
         </View>
+        {products.map((product) => (
+            <Text style={styles.product}>{product.name}</Text> 
+          ))}
       </View>
     </TouchableWithoutFeedback>
   );
@@ -36,12 +39,16 @@ const styles = StyleSheet.create({
     marginBottom: 0,
     overflow: "hidden",
   },
-  detailsContainer: {
-    padding: 15,
-  },
   image: {
     aspectRatio: 1,
   },
+  textContainer: {
+    padding: 15,
+  },
+  product: {
+    padding: 15,
+    backgroundColor: '#eee',
+  }
 });
 
 export default Card;

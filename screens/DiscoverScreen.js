@@ -20,10 +20,12 @@ function DiscoverScreen({ navigation }) {
   const fetchPosts = async () => {
     const { data: posts, error } = await supabase
       .from('posts')
-      .select('*')
+      .select('*, products (*)')
       .order('id', { ascending: false })
 
-    if (!error) {  
+    if (!error) {
+      console.log('--- posts ---', posts)
+
       posts.forEach(post => {
         if (post.images) {
           post.images = post.images.map(image => {
@@ -58,6 +60,7 @@ function DiscoverScreen({ navigation }) {
           <Card
             images={post.images}
             text={post.text}
+            products={post.products}
           />
         )}
         refreshing={refreshing}

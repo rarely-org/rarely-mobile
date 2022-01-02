@@ -24,8 +24,8 @@ function Card({ text, images, products, onPress }) {
           </Text>
         </View>
         {products.map((product) => (
-            <Text style={styles.product}>{product.name}</Text> 
-          ))}
+          <Text style={styles.product}>{product.name}</Text> 
+        ))}
       </View>
     </TouchableWithoutFeedback>
   );

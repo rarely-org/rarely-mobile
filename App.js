@@ -9,8 +9,9 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 // console.log(mdiPlaylistEdit)
 
+import DiscoverNavigator from "./navigators/DiscoverNavigator";
 import Screen from "./components/Screen";
-import DiscoverScreen from "./screens/DiscoverScreen";
+// import DiscoverScreen from "./screens/DiscoverScreen";
 import PostEditScreen from "./screens/PostEditScreen";
 
 const Search = () => (
@@ -39,7 +40,7 @@ const TabNavigator = () => (
     activeTintColor: "#2196f3",
     inactiveTintColor: "#333333"
   }}>
-    <Tab.Screen name="Discover" component={DiscoverScreen} options={{
+    <Tab.Screen name="Discover" component={DiscoverNavigator} options={{
       tabBarIcon: ({ color, size }) => (<MaterialCommunityIcons name="creation" color={color} size={size} />)
     }}/>
     <Tab.Screen name="Search" component={Search} options={{

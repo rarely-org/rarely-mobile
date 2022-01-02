@@ -9,7 +9,9 @@ import { supabase } from '../config/supabase';
 // URL polyfill. Required for Supabase queries to work in React Native.
 import 'react-native-url-polyfill/auto'
 
-function DiscoverScreen({ navigation }) {
+function ProductPostsScreen({ navigation, route }) {
+  console.log('route.params', route.params);
+
   const [posts, setPosts] = useState([])
   const [refreshing, setRefreshing] = useState(false)
 
@@ -61,7 +63,6 @@ function DiscoverScreen({ navigation }) {
             images={post.images}
             text={post.text}
             products={post.products}
-            onPress={() => navigation.navigate('Product', { post })}
           />
         )}
         refreshing={refreshing}
@@ -77,4 +78,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DiscoverScreen;
+export default ProductPostsScreen;

@@ -26,6 +26,9 @@ function Card({ text, images, products, onPress }) {
         {products.map((product) => (
           <Text style={styles.product}>{product.name}</Text> 
         ))}
+        <View style={styles.condition}>
+          <Text style={styles.conditionChip}>SMA</Text>
+        </View>
       </View>
     </TouchableWithoutFeedback>
   );
@@ -48,6 +51,28 @@ const styles = StyleSheet.create({
   product: {
     padding: 15,
     backgroundColor: '#eee',
+  },
+  condition: {
+    padding: 15,
+    paddingTop: 0,
+    backgroundColor: '#eee',
+    textAlign: 'right',
+    flexDirection: 'column',
+    alignItems: 'flex-end',
+    position: 'relative',
+  },
+  conditionChip: {
+    position: 'relative',
+    backgroundColor: '#dedede',
+    color: '#aaa',
+    padding: 4,
+    paddingLeft: 8,
+    paddingRight: 8,
+    fontSize: 14,
+    borderRadius: 8,
+    borderColor: '#dedede',
+    borderWidth: 1,
+    overflow: "hidden",
   }
 });
 

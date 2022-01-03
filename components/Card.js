@@ -19,7 +19,7 @@ function Card({ text, images, products, onPress }) {
           <Image style={styles.image} source={{ uri: images[0] }} />
         )}
         <View style={styles.textContainer}>
-          <Text style={styles.text} numberOfLines={5}>
+          <Text style={styles.text} numberOfLines={10}>
             {text}
           </Text>
         </View>

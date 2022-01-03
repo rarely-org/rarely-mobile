@@ -8,7 +8,7 @@ const Stack = createStackNavigator();
 const DiscoverNavigator = () => (
   <Stack.Navigator>
     <Stack.Screen name="Discover" component={DiscoverScreen} />
-    <Stack.Screen name="Product" component={ProductPostsScreen} />
+    <Stack.Screen name="Product" component={ProductPostsScreen} options={({ route }) => ({ title: route.params.name })}/>
   </Stack.Navigator>
 );
 

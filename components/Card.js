@@ -9,7 +9,7 @@ import {
 import Text from "./Text";
 import colors from "../config/colors";
 
-function Card({ text, images, products, onPress }) {
+function Card({ text, images, products, categories, onPress }) {
   // console.log('Card:images', images)
   // console.log('Card:text', text)
   return (
@@ -24,7 +24,10 @@ function Card({ text, images, products, onPress }) {
           </Text>
         </View>
         {products.map((product) => (
-          <Text style={styles.product}>{product.name}</Text> 
+          <Text style={styles.product}>{product.name}</Text>
+        ))}
+        {categories.map((category) => (
+          <Text style={styles.product}>{category.name}</Text>
         ))}
         <View style={styles.condition}>
           <Text style={styles.conditionChip}>SMA</Text>

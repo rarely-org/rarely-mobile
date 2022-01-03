@@ -28,7 +28,9 @@ function Card({ text, images, products, categories, navigation }) {
         </TouchableOpacity>
       ))}
       {categories && categories.map((category) => (
-        <Text style={styles.product}>{category.name}</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Category', category)}>
+          <Text style={styles.product}>{category.name}</Text>
+        </TouchableOpacity>
       ))}
       <View style={styles.condition}>
         <Text style={styles.conditionChip}>SMA</Text>

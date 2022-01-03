@@ -3,37 +3,37 @@ import {
   Image,
   View,
   StyleSheet,
-  TouchableWithoutFeedback,
+  TouchableOpacity,
 } from "react-native";
 
 import Text from "./Text";
 import colors from "../config/colors";
 
-function Card({ text, images, products, categories, onPress }) {
+function Card({ text, images, products, categories, navigation }) {
   // console.log('Card:images', images)
   // console.log('Card:text', text)
   return (
-    <TouchableWithoutFeedback onPress={onPress}>
-      <View style={styles.card}>
-        {images && images.length > 0 && (
-          <Image style={styles.image} source={{ uri: images[0] }} />
-        )}
-        <View style={styles.textContainer}>
-          <Text style={styles.text} numberOfLines={10}>
-            {text}
-          </Text>
-        </View>
-        {products.map((product) => (
-          <Text style={styles.product}>{product.name}</Text>
-        ))}
-        {categories.map((category) => (
-          <Text style={styles.product}>{category.name}</Text>
-        ))}
-        <View style={styles.condition}>
-          <Text style={styles.conditionChip}>SMA</Text>
-        </View>
+    <View style={styles.card}>
+      {images && images.length > 0 && (
+        <Image style={styles.image} source={{ uri: images[0] }} />
+      )}
+      <View style={styles.textContainer}>
+        <Text style={styles.text} numberOfLines={10}>
+          {text}
+        </Text>
       </View>
-    </TouchableWithoutFeedback>
+      {products && products.map((product) => (
+        <TouchableOpacity onPress={() => navigation.navigate('Product', product)}>
+          <Text style={styles.product}>{product.name}</Text>
+        </TouchableOpacity>
+      ))}
+      {categories && categories.map((category) => (
+        <Text style={styles.product}>{category.name}</Text>
+      ))}
+      <View style={styles.condition}>
+        <Text style={styles.conditionChip}>SMA</Text>
+      </View>
+    </View>
   );
 }
 

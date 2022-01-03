@@ -62,7 +62,7 @@ function DiscoverScreen({ navigation }) {
             text={post.text}
             products={post.products}
             categories={post.categories}
-            onPress={() => navigation.navigate('Product', { post })}
+            navigation={navigation}
           />
         )}
         refreshing={refreshing}

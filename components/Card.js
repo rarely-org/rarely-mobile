@@ -35,15 +35,18 @@ function Card({ text, images, products, categories, navigation }) {
               <Text style={styles.product}>{product.name}</Text>
             </TouchableOpacity>
             <Text style={styles.chevron}><MaterialCommunityIcons name="chevron-right" size={15} /></Text>
-            <Text style={styles.category}>Active wheelchairs</Text>
+            <Text style={styles.category}>{product.categories.name}</Text>
+          </View>
+        ))}
+        {categories && categories.map((category) => (
+          <View style={styles.productCategoryRow}>
+            <Text style={styles.chevron}><MaterialCommunityIcons name="chevron-right" size={15} /></Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Category', category)}>
+              <Text style={styles.category}>{category.name}</Text>
+            </TouchableOpacity>
           </View>
         ))}
       </View>
-      {categories && categories.map((category) => (
-        <TouchableOpacity onPress={() => navigation.navigate('Category', category)}>
-          <Text style={styles.product}>{category.name}</Text>
-        </TouchableOpacity>
-      ))}
     </View>
   );
 }

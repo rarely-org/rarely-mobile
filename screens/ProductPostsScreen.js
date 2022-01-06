@@ -22,7 +22,7 @@ function ProductPostsScreen({ navigation, route }) {
   const fetchPosts = async () => {
     const { data: posts, error } = await supabase
       .from('posts')
-      .select('*, filtered_products:products!post_product!inner (id), products:products!post_product (id, name)')
+      .select('*, filtered_products:products!post_product!inner (id), products:products!post_product (id, name, categories!products_category_id_fkey (id, name))')
       .in('filtered_products.id', [route.params.id])
       .order('id', { ascending: false })
 

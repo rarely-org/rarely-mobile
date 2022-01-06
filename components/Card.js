@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import Text from "./Text";
 import colors from "../config/colors";
@@ -22,19 +23,24 @@ function Card({ text, images, products, categories, navigation }) {
           {text}
         </Text>
       </View>
+      <View style={styles.condition}>
+        <Text style={styles.conditionChip}>SMA</Text>
+      </View>
       {products && products.map((product) => (
-        <TouchableOpacity onPress={() => navigation.navigate('Product', product)}>
-          <Text style={styles.product}>{product.name}</Text>
-        </TouchableOpacity>
+        <View style={styles.productCategoryRow}>
+          <Text style={styles.chevron}><MaterialCommunityIcons name="chevron-right" size={15} /></Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Product', product)}>
+            <Text style={styles.product}>{product.name}</Text>
+          </TouchableOpacity>
+          <Text style={styles.chevron}><MaterialCommunityIcons name="chevron-right" size={15} /></Text>
+          <Text style={styles.category}>Active wheelchairs</Text>
+        </View>
       ))}
       {categories && categories.map((category) => (
         <TouchableOpacity onPress={() => navigation.navigate('Category', category)}>
           <Text style={styles.product}>{category.name}</Text>
         </TouchableOpacity>
       ))}
-      <View style={styles.condition}>
-        <Text style={styles.conditionChip}>SMA</Text>
-      </View>
     </View>
   );
 }
@@ -53,29 +59,53 @@ const styles = StyleSheet.create({
   textContainer: {
     padding: 15,
   },
+  productCategoryRow: {
+    flexDirection: 'row',
+    paddingLeft: 15,
+    paddingRight: 15,
+    paddingTop: 10,
+    // paddingBottom: 10,
+    backgroundColor: '#eee',
+  },
+  chevron: {
+    fontSize: 15,
+    paddingTop: 2,
+    backgroundColor: '#eee',
+    color: '#888'
+  },
   product: {
-    padding: 15,
+    fontSize: 15,
+    paddingLeft: 5,
+    paddingRight: 5,
+    backgroundColor: '#eee',
+    fontWeight: 'bold',
+  },
+  category: {
+    flex: 1,
+    fontSize: 15,
+    paddingLeft: 5,
+    paddingRight: 5,
     backgroundColor: '#eee',
   },
   condition: {
     padding: 15,
     paddingTop: 0,
-    backgroundColor: '#eee',
+    // backgroundColor: '#eee',
     textAlign: 'right',
     flexDirection: 'column',
-    alignItems: 'flex-end',
+    alignItems: 'flex-start',
     position: 'relative',
   },
   conditionChip: {
     position: 'relative',
-    backgroundColor: '#dedede',
-    color: '#aaa',
+    backgroundColor: '#eee',
+    color: '#555',
     padding: 4,
     paddingLeft: 8,
     paddingRight: 8,
     fontSize: 14,
     borderRadius: 8,
-    borderColor: '#dedede',
+    borderColor: '#eee',
     borderWidth: 1,
     overflow: "hidden",
   }

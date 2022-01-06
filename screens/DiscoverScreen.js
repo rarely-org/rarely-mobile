@@ -20,7 +20,7 @@ function DiscoverScreen({ navigation }) {
   const fetchPosts = async () => {
     const { data: posts, error } = await supabase
       .from('posts')
-      .select('*, products!post_product (*), categories (*)')
+      .select('*, products!post_product (id, name)')
       .order('id', { ascending: false })
 
     if (!error) {

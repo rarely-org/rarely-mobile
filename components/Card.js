@@ -25,6 +25,7 @@ function Card({ text, images, products, categories, navigation }) {
       </View>
       <View style={styles.condition}>
         <Text style={styles.conditionChip}>SMA</Text>
+        <Text style={styles.countryChip}>🇩🇪</Text>
       </View>
       {products && products.map((product) => (
         <View style={styles.productCategoryRow}>
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
     paddingTop: 0,
     // backgroundColor: '#eee',
     textAlign: 'right',
-    flexDirection: 'column',
+    flexDirection: 'row',
     alignItems: 'flex-start',
     position: 'relative',
   },
@@ -103,6 +104,20 @@ const styles = StyleSheet.create({
     padding: 4,
     paddingLeft: 8,
     paddingRight: 8,
+    fontSize: 14,
+    borderRadius: 8,
+    borderColor: '#eee',
+    borderWidth: 1,
+    overflow: "hidden",
+  },
+  countryChip: {
+    position: 'relative',
+    backgroundColor: '#eee',
+    color: '#555',
+    padding: 2,
+    paddingLeft: 8,
+    paddingRight: 8,
+    marginLeft: 10,
     fontSize: 14,
     borderRadius: 8,
     borderColor: '#eee',

@@ -27,16 +27,18 @@ function Card({ text, images, products, categories, navigation }) {
         <Text style={styles.conditionChip}>SMA</Text>
         <Text style={styles.countryChip}>🇩🇪</Text>
       </View>
-      {products && products.map((product) => (
-        <View style={styles.productCategoryRow}>
-          <Text style={styles.chevron}><MaterialCommunityIcons name="chevron-right" size={15} /></Text>
-          <TouchableOpacity onPress={() => navigation.navigate('Product', product)}>
-            <Text style={styles.product}>{product.name}</Text>
-          </TouchableOpacity>
-          <Text style={styles.chevron}><MaterialCommunityIcons name="chevron-right" size={15} /></Text>
-          <Text style={styles.category}>Active wheelchairs</Text>
-        </View>
-      ))}
+      <View style={styles.productCategorySection}>
+        {products && products.map((product) => (
+          <View style={styles.productCategoryRow}>
+            <Text style={styles.chevron}><MaterialCommunityIcons name="chevron-right" size={15} /></Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Product', product)}>
+              <Text style={styles.product}>{product.name}</Text>
+            </TouchableOpacity>
+            <Text style={styles.chevron}><MaterialCommunityIcons name="chevron-right" size={15} /></Text>
+            <Text style={styles.category}>Active wheelchairs</Text>
+          </View>
+        ))}
+      </View>
       {categories && categories.map((category) => (
         <TouchableOpacity onPress={() => navigation.navigate('Category', category)}>
           <Text style={styles.product}>{category.name}</Text>
@@ -60,13 +62,16 @@ const styles = StyleSheet.create({
   textContainer: {
     padding: 15,
   },
+  productCategorySection: {
+    padding: 0,
+    paddingBottom: 10,
+    backgroundColor: '#eee',
+  },
   productCategoryRow: {
     flexDirection: 'row',
     paddingLeft: 15,
     paddingRight: 15,
     paddingTop: 10,
-    // paddingBottom: 10,
-    backgroundColor: '#eee',
   },
   chevron: {
     fontSize: 15,

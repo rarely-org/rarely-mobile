@@ -22,7 +22,7 @@ function ProductPostsScreen({ navigation, route }) {
   const fetchPosts = async () => {
     const { data: posts, error } = await supabase
       .from('posts')
-      .select('*, categories!category_post!inner (id, name)')
+      .select('*, products!post_product!inner (id, name)')
       .in('categories.id', [route.params.id])
       .order('id', { ascending: false })
 
@@ -65,6 +65,7 @@ function ProductPostsScreen({ navigation, route }) {
             images={post.images}
             text={post.text}
             products={post.products}
+            navigation={navigation}
           />
         )}
         refreshing={refreshing}

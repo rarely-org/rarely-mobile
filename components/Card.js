@@ -35,7 +35,9 @@ function Card({ text, images, products, categories, navigation }) {
               <Text style={styles.product}>{product.name}</Text>
             </TouchableOpacity>
             <Text style={styles.chevron}><MaterialCommunityIcons name="chevron-right" size={15} /></Text>
-            <Text style={styles.category}>{product.categories.name}</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Category', product.categories)}>
+              <Text style={styles.category}>{product.categories.name}</Text>
+            </TouchableOpacity>
           </View>
         ))}
         {categories && categories.map((category) => (

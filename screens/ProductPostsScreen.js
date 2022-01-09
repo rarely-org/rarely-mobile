@@ -9,7 +9,9 @@ import { supabase } from '../config/supabase';
 // URL polyfill. Required for Supabase queries to work in React Native.
 import 'react-native-url-polyfill/auto'
 
-function DiscoverScreen({ navigation }) {
+function ProductPostsScreen({ navigation, route }) {
+  console.log('route.params', route.params);
+
   const [posts, setPosts] = useState([])
   const [refreshing, setRefreshing] = useState(false)
 
@@ -20,12 +22,14 @@ function DiscoverScreen({ navigation }) {
   const fetchPosts = async () => {
     const { data: posts, error } = await supabase
       .from('posts')
-      .select('*, products!post_product (id, name, categories!products_category_id_fkey (id, name)), categories!category_post (id, name)')
+      .select('*, filtered_products:products!post_product!inner (id), products:products!post_product (id, name, categories!products_category_id_fkey (id, name))')
+      .in('filtered_products.id', [route.params.id])
       .order('id', { ascending: false })
 
-    if (!error) {
-      console.log('--- posts ---', posts)
+    console.log('posts for product:', posts)
+    console.log('error for product:', error)
 
+    if (!error) {
       posts.forEach(post => {
         if (post.images) {
           post.images = post.images.map(image => {
@@ -61,7 +65,6 @@ function DiscoverScreen({ navigation }) {
             images={post.images}
             text={post.text}
             products={post.products}
-            categories={post.categories}
             navigation={navigation}
           />
         )}
@@ -78,4 +81,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DiscoverScreen;
+export default ProductPostsScreen;
